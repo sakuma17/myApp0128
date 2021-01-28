@@ -1,12 +1,12 @@
 'use strict';
 window.onload=function(){
-	const suits=['s','d','h','c'];
+	const suits=['spade','diamond','heart','club'];
 	const cards=[];
 	class Card{
 		constructor(suit,num){
 			this.suit=suit;
 			this.num=num;
-			this.front=`${this.suit}${this.num<10?'0':''}${this.num}.gif`;
+			this.front=`card_${this.suit}_${this.num<10?'0':''}${this.num}.png`;
 			if(num==1){
 				this.num=14;
 			}
@@ -50,8 +50,8 @@ window.onload=function(){
 	let limit=10;
 
 	const modeSelect=()=>{
-		card1.src='images/z02.gif';
-		card2.src='images/z02.gif';
+		card1.src='images/card_back.png';
+		card2.src='images/card_back.png';
 		msg.textContent='モードを選んでください'
 		modeA.classList.remove('none');
 		modeB.classList.remove('none');
@@ -61,7 +61,7 @@ window.onload=function(){
 
 	const highLow=()=>{
 		card1.src=`images/${cards[count].front}`;
-		card2.src='images/z02.gif';
+		card2.src='images/card_back.png';
 		msg.textContent='次の数字は今の数字より';
 		next.classList.add('none');
 		high.classList.remove('none');
