@@ -1,0 +1,74 @@
+.none{
+	display:none;
+}
+
+body{
+	width:100vw;
+	height:100vh;
+	background-color:green;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+}
+
+#title{
+	height:0vh;
+	line-height:0vh;
+	text-align:center;
+	font-size:10vmin;
+}
+.hColor{
+	color:orange;
+}
+.aColor{
+	color:white;
+	font-size:9vmin;
+}
+.lColor{
+	color:aqua;
+}
+
+#imgBox{
+	width:75vmin;
+	height:50vmin;
+	line-height:15vmin;
+	text-align:center;
+}
+
+img{
+	width:32vmin;
+	height:auto;
+}
+
+#msgWindow{
+	border-radius:35px;
+	width:70vmin;
+	height:18vmin;
+	background-color:black;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+}
+
+#msgWindow p{
+	color:white;
+	height:2vmin;
+	line-height:2vmin;
+	font-size:4vmin;
+}
+
+button {
+	width: 30vmin;
+	height:5vmin;
+	font-size: 3vmin;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+#scoreBox{
+	color:white;
+	font-size:2.5vmin;
+}
