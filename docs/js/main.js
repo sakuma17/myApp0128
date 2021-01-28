@@ -69,12 +69,15 @@ window.onload=function(){
 	}
 
 	const gameStart=(eve)=>{
-		shuffle();
-		highLow();
+		count=0;
+		score=0;
+		limit=10;
 		modeA.classList.add('none');
 		modeB.classList.add('none');
 		mode=eve.target.id;
 		console.log(mode);
+		shuffle();
+		highLow();
 	}
 
 	modeA.addEventListener('click',gameStart);
@@ -92,11 +95,12 @@ window.onload=function(){
 		low.classList.add('none');
 		result.classList.add('none');
 		retry.classList.remove('none');
-		count=0;
-		score=0;
-		limit=10;
 	}
 
+	const prepareResult=()=>{
+					next.classList.add('none');
+					result.classList.remove('none');
+	}
 
 	const judge=(eve)=>{
 		next.textContent='次へ';
@@ -107,7 +111,7 @@ window.onload=function(){
 		card2.src=`images/${cards[count+1].front}`;
 		select=eve.target.textContent;
 		if(cards[count].num==cards[count+1].num){
-			msg.textContent='引き分けなのでもう一度';
+			msg.textContent='同値です';
 			limit++;
 		}else if(select=='高い'){
 			if(cards[count].num<cards[count+1].num){
@@ -116,8 +120,7 @@ window.onload=function(){
 			}else{
 				msg.textContent='ハズレです！';
 				if(mode=='modeA'){
-					next.classList.add('none');
-					result.classList.remove('none');
+					prepareResult();
 				}
 			}
 		}else if(select=='低い'){
@@ -127,8 +130,7 @@ window.onload=function(){
 			}else{
 				msg.textContent='ハズレです！';
 				if(mode=='modeA'){
-					next.classList.add('none');
-					result.classList.remove('none');
+					prepareResult();
 				}
 			}
 		}
@@ -139,11 +141,14 @@ window.onload=function(){
 		}
 		count++;
 		console.log(`count=${count},score=${score}`);
-		if(count==limit){
-			next.classList.add('none');
-			result.classList.remove('none');
+		if((mode=='modeB')&&(count==limit)){
+			prepareResult();
+		}
+		if((mode=='modeA')&&(count==cards.length-1)){
+			prepareResult();
 		}
 	};
+
 	next.addEventListener('click',highLow);
 	high.addEventListener('click',judge);
 	low.addEventListener('click',judge);

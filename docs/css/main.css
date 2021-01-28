@@ -21,7 +21,7 @@ body{
 .hColor{
 	color:orange;
 }
-.aColor{
+.and{
 	color:white;
 	font-size:9vmin;
 }
@@ -68,7 +68,17 @@ button:hover {
 	cursor: pointer;
 }
 
-#scoreBox{
-	color:white;
-	font-size:2.5vmin;
+#mode1score,#mode2score{
+	position:absolute;
+	font-size:3.5vmin;
+}
+#mode1score{
+	color:#EF1;
+	right:10px;
+	top:1px;
+}
+#mode2score{
+	color:#ffe633;
+	right:11px;
+	top:20px;
 }
