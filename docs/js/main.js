@@ -6,17 +6,18 @@ window.onload=function(){
 		constructor(suit,num){
 			this.suit=suit;
 			this.num=num;
-			this.front=`card_${this.suit}_${this.num<10?'0':''}${this.num}.png`;
+			this.front=`card_${this.suit}_${this.num<10?'0':''}${this.num}.gif`;
 			if(num==1){
 				this.num=14;
 			}
 		}
 	}
-
-	for(let i=0;i<suits.length;i++){
-		for(let j=1;j<=13;j++){
-			let card=new Card(suits[i],j);
-			cards.push(card);
+	function create_cards(){
+		for(let i=0;i<suits.length;i++){
+			for(let j=1;j<=13;j++){
+				let card=new Card(suits[i],j);
+				cards.push(card);
+			}
 		}
 	}
 
@@ -50,8 +51,8 @@ window.onload=function(){
 	let limit=10;
 
 	const modeSelect=()=>{
-		card1.src='images/card_back.png';
-		card2.src='images/card_back.png';
+		card1.src='images/card_back.gif';
+		card2.src='images/card_back.gif';
 		msg.textContent='モードを選んでください'
 		modeA.classList.remove('none');
 		modeB.classList.remove('none');
@@ -61,7 +62,7 @@ window.onload=function(){
 
 	const highLow=()=>{
 		card1.src=`images/${cards[count].front}`;
-		card2.src='images/card_back.png';
+		card2.src='images/card_back.gif';
 		msg.textContent='次の数字は今の数字より';
 		next.classList.add('none');
 		high.classList.remove('none');
@@ -75,7 +76,8 @@ window.onload=function(){
 		modeA.classList.add('none');
 		modeB.classList.add('none');
 		mode=eve.target.id;
-		console.log(mode);
+		//console.log(mode);
+		create_cards();
 		shuffle();
 		highLow();
 	}
@@ -140,7 +142,7 @@ window.onload=function(){
 			highScoreB=score;
 		}
 		count++;
-		console.log(`count=${count},score=${score}`);
+		//console.log(`count=${count},score=${score}`);
 		if((mode=='modeB')&&(count==limit)){
 			prepareResult();
 		}
